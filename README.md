@@ -1,6 +1,5 @@
 # AppImage for Cisco Packet Tracer
-*I'm already Tracer.*
-
+*🎶I'm already Tracer🎶*
 
 ### A configuration for [pkg2appimage](https://github.com/AppImage/pkg2appimage) to build Packet Tracer in AppImage form.
 
