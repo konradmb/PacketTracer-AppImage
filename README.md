@@ -2,7 +2,7 @@
 *I'm already Tracer.*
 
 
-## A configuration for [pkg2appimage](https://github.com/AppImage/pkg2appimage) to build Packet Tracer in AppImage form.
+### A configuration for [pkg2appimage](https://github.com/AppImage/pkg2appimage) to build Packet Tracer in AppImage form.
 
 ## How to use it?
 
