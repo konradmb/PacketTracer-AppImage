@@ -19,7 +19,7 @@ ingredients:
     # Fix overly restrictive permissions - we should be able do delete directory
     - find extracted/saves -type d -exec chmod +w {} +
     # Copy helper script
-    - cp ../PacketTracerSettingsFix.py .
+    - cp ../etc/PacketTracerSettingsFix.py .
     
 script:
   # Copy helper script to bin
