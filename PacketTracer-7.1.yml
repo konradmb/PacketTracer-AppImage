@@ -28,12 +28,12 @@ script:
   - cp ../extracted/bin/Cisco-PacketTracer.desktop ./PacketTracer.desktop
   - cp ../extracted/art/app.png ./PacketTracer.png
   - mkdir -p usr/lib/x86_64-linux-gnu/
-  - cp ../extracted/bin/*.so.* usr/lib/x86_64-linux-gnu/
+  - cp ../extracted/lib/*.so.* usr/lib/x86_64-linux-gnu/
   # Copy all of the archive contents to its own directory
   - mkdir -p usr/share/PacketTracer
   - cp -r ../extracted/* usr/share/PacketTracer
   # Remove libraries already copied to usr/lib/x86_64-linux-gnu
-  - rm usr/share/PacketTracer/bin/*.so.*
+  #- rm usr/share/PacketTracer/bin/*.so.*
   # Remove files needed for installation
   - rm usr/share/PacketTracer/tpl.* usr/share/PacketTracer/set_* usr/share/PacketTracer/install
   # Remove unused binaries
