@@ -15,7 +15,7 @@ ingredients:
     # Remove directory if already extracted
     - rm -rf extracted
     - mkdir -p extracted
-    - tar zxvf ../Packet\ Tracer*tar.gz --directory extracted/
+    - tar zxvf ../Packet\ Tracer\ 7.2*tar.gz --directory extracted/
     # Fix overly restrictive permissions - we should be able do delete directory
     - find extracted/saves -type d -exec chmod +w {} +
     # Copy helper script
