@@ -9,6 +9,7 @@ ingredients:
     - libpng12-0
     - libssl1.0.0
     - python3
+    - libicu52
   exclude:
     - PacketTracer
   script:
