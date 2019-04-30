@@ -58,4 +58,6 @@ script:
   # Change icon and executable path
   - sed -i 's!Icon=/opt/pt/art/app.png!Icon=PacketTracer.png!' PacketTracer.desktop
   - sed -i 's!Exec=packettracer %F!Exec=PacketTracerWrapper!' PacketTracer.desktop
+  # Change name to prevent confilcts with newer versions
+  - sed -i 's!Name=Cisco Packet Tracer!Name=Cisco Packet Tracer 7.1!' PacketTracer.desktop
   
