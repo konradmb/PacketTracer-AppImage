@@ -20,11 +20,11 @@
    chmod +x pkg2appimage
    ```
 5. Build it:
- * If you want to build Packet Tracer 7.2.1:
+   * If you want to build Packet Tracer 7.2.1:
    ```shell
    ./pkg2appimage PacketTracer.yml
    ```
- * Or if you want to build Packet Tracer 7.1.1:
+   * Or if you want to build Packet Tracer 7.1.1:
    ```shell
    ./pkg2appimage PacketTracer-7.1.yml
    ```
