@@ -1,4 +1,4 @@
-app: PacketTracer
+app: PacketTracer-7.1
   union: true
 
 ingredients:
@@ -9,13 +9,14 @@ ingredients:
     - libpng12-0
     - libssl1.0.0
     - python3
+    - libicu52
   exclude:
     - PacketTracer
   script:
     # Remove directory if already extracted
     - rm -rf extracted
     - mkdir -p extracted
-    - tar zxvf ../Packet\ Tracer\ 7.2*tar.gz --directory extracted/
+    - tar --delay-directory-restore -zxvf ../Packet\ Tracer\ 7.1*tar.gz --directory extracted/
     # Fix overly restrictive permissions - we should be able do delete directory
     - find extracted/saves -type d -exec chmod +w {} +
     # Copy helper script
@@ -28,12 +29,12 @@ script:
   - cp ../extracted/bin/Cisco-PacketTracer.desktop ./PacketTracer.desktop
   - cp ../extracted/art/app.png ./PacketTracer.png
   - mkdir -p usr/lib/x86_64-linux-gnu/
-  - cp ../extracted/bin/*.so.* usr/lib/x86_64-linux-gnu/
+  - cp ../extracted/lib/*.so.* usr/lib/x86_64-linux-gnu/
   # Copy all of the archive contents to its own directory
   - mkdir -p usr/share/PacketTracer
   - cp -r ../extracted/* usr/share/PacketTracer
   # Remove libraries already copied to usr/lib/x86_64-linux-gnu
-  - rm usr/share/PacketTracer/bin/*.so.*
+  #- rm usr/share/PacketTracer/bin/*.so.*
   # Remove files needed for installation
   - rm usr/share/PacketTracer/tpl.* usr/share/PacketTracer/set_* usr/share/PacketTracer/install
   # Remove unused binaries
@@ -57,4 +58,6 @@ script:
   # Change icon and executable path
   - sed -i 's!Icon=/opt/pt/art/app.png!Icon=PacketTracer.png!' PacketTracer.desktop
   - sed -i 's!Exec=packettracer %F!Exec=PacketTracerWrapper!' PacketTracer.desktop
+  # Change name to prevent confilcts with newer versions
+  - sed -i 's!Name=Cisco Packet Tracer!Name=Cisco Packet Tracer 7.1!' PacketTracer.desktop
   
