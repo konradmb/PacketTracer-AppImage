@@ -40,7 +40,8 @@ script:
   # Remove unused binaries
   - rm usr/share/PacketTracer/bin/linguist usr/share/PacketTracer/bin/meta
   # Fix wrong permissions - images shouldn't be executable. Cisco cannot into permissions. ;)
-  - chmod -x usr/share/PacketTracer/help/default/images/font*.png
+  - chmod -x usr/share/PacketTracer/art/ComponentBox/*.png
+  - chmod -x usr/share/PacketTracer/art/Toolbar/*.png
   # Add wrapper
   - cat > usr/bin/PacketTracerWrapper << EOF
   - #!/bin/sh
