@@ -1,5 +1,4 @@
 app: PacketTracer
-union: true
 
 ingredients:
   dist: jessie
