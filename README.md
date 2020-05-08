@@ -10,9 +10,7 @@
     git clone https://github.com/konradmb/PacketTracer-AppImage.git
     cd PacketTracer-AppImage/
     ```
-2. Download Packet Tracer 7.2.1 or 7.1.1 archive from [official site](https://www.netacad.com/courses/packet-tracer):
-   * `Packet Tracer 7.2.1 for Linux 64 bit.tar.gz`
-   * or `Packet Tracer 7.1.1 for Linux 64 bit.tar.gz`
+2. Download Packet Tracer 7.3.0 archive from official site: [PacketTracer_730_amd64.deb](https://www.netacad.com/portal/resources/file/aa38a51f-45bb-4eb1-89a0-01d961ae1432) (requires login).
 3. And put it into `PacketTracer-AppImage` directory.
 4. Download pkg2appimage tool and make it executable.
    ```shell
@@ -20,16 +18,28 @@
    chmod +x pkg2appimage
    ```
 5. Build it:
-   * If you want to build Packet Tracer 7.2.1:
+
    ```shell
    ./pkg2appimage PacketTracer.yml
    ```
-   * Or if you want to build Packet Tracer 7.1.1:
-   ```shell
-   ./pkg2appimage PacketTracer-7.1.yml
-   ```
+
 7. After a short break you should get an executable inside `out/` directory.
 
+### Older versions
+
+#### Packet Tracer 7.2.1
+
+Follow the guide, but download [Packet Tracer 7.2.1 for Linux 64 bit.tar.gz](https://www.netacad.com/portal/resources/file/88097a5b-6dbd-43b5-9589-72797dca143c).
+
+And build using:
+
+```shell
+   ./pkg2appimage PacketTracer-7.2.1.yml
+```
+
+#### Packet Tracer 7.1
+
+Cisco deleted previous download link. If you find one, please open an issue.
 
 ## Differences from official version 
 

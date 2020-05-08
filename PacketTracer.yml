@@ -8,54 +8,44 @@ ingredients:
     - libpng12-0
     - libssl1.0.0
     - python3
-  exclude:
-    - PacketTracer
+    - libdouble-conversion1
+    - qt-at-spi
   script:
-    # Remove directory if already extracted
-    - rm -rf extracted
-    - mkdir -p extracted
-    - tar zxvf ../Packet\ Tracer\ 7.2*tar.gz --directory extracted/
-    # Fix overly restrictive permissions - we should be able do delete directory
-    - find extracted/saves -type d -exec chmod +w {} +
-    # Copy helper script
+    - ln -sf ../PacketTracer_730_amd64.deb .
+  # Copy helper script
     - cp ../etc/PacketTracerSettingsFix.py .
     
 script:
+  # Fix overly restrictive permissions - we should be able do delete directory
+  - find opt/pt/saves -type d -exec chmod +w {} +
   # Copy helper script to bin
   - cp ../PacketTracerSettingsFix.py usr/bin/
   # Copy .desktop file, icon and libs from extracted archive
-  - cp ../extracted/bin/Cisco-PacketTracer.desktop ./PacketTracer.desktop
-  - cp ../extracted/art/app.png ./PacketTracer.png
+  - cp usr/share/applications/cisco-pt7.desktop ./PacketTracer.desktop
+  - cp opt/pt/art/app.png ./PacketTracer.png
   - mkdir -p usr/lib/x86_64-linux-gnu/
-  - cp ../extracted/bin/*.so.* usr/lib/x86_64-linux-gnu/
-  # Copy all of the archive contents to its own directory
-  - mkdir -p usr/share/PacketTracer
-  - cp -r ../extracted/* usr/share/PacketTracer
-  # Remove libraries already copied to usr/lib/x86_64-linux-gnu
-  - rm usr/share/PacketTracer/bin/*.so.*
-  # Remove files needed for installation
-  - rm usr/share/PacketTracer/tpl.* usr/share/PacketTracer/set_* usr/share/PacketTracer/install
-  # Remove unused binaries
-  - rm usr/share/PacketTracer/bin/linguist usr/share/PacketTracer/bin/meta
-  # Fix wrong permissions - images shouldn't be executable. Cisco cannot into permissions. ;)
-  - chmod -x usr/share/PacketTracer/help/default/images/font*.png
-  - chmod -x usr/share/PacketTracer/art/ComponentBox/*.png
-  - chmod -x usr/share/PacketTracer/art/Toolbar/*.png
+  - mv opt/pt/bin/*.so.* usr/lib/x86_64-linux-gnu/
+  # # Remove unused binaries
+  - rm opt/pt/bin/linguist opt/pt/bin/meta
+  # Fix wrong permissions - images shouldn't be executable. Cisco still cannot into permissions, even with deb. ;)
+  - find opt/pt/help/default/images/ -type f -exec chmod -x {} +
+  - chmod -x opt/pt/art/ComponentBox/*.png
+  - chmod -x opt/pt/art/Toolbar/*.png
   # Add wrapper
   - cat > usr/bin/PacketTracerWrapper << EOF
   - #!/bin/sh
   # Fool PacketTracer into thinking that it's been already running from this directory
-  # Should think of a nicer solution
-  - bin/python3 bin/PacketTracerSettingsFix.py
-  - cd share/PacketTracer/bin
-  - ./PacketTracer7
+  - cd ..
+  - usr/bin/python3 usr/bin/PacketTracerSettingsFix.py 7.3
+  - cd opt/pt/bin
+  - QT_AUTO_SCREEN_SCALE_FACTOR=1 ./PacketTracer7 "$@"
   - EOF
   # Make it executable
   - chmod +x usr/bin/PacketTracerWrapper
   # Patch PT bin - change $HOME/.packettracer string to something else
   # New file name must have the same length
-  - sed -i 's!/.packettracer!/.ptappimage00!g' usr/share/PacketTracer/bin/PacketTracer7
+  - sed -i 's!/.packettracer!/.ptappimage00!g' opt/pt/bin/PacketTracer7
   # Change icon and executable path
   - sed -i 's!Icon=/opt/pt/art/app.png!Icon=PacketTracer.png!' PacketTracer.desktop
-  - sed -i 's!Exec=packettracer %F!Exec=PacketTracerWrapper!' PacketTracer.desktop
-  
+  - sed -i 's!Exec=/opt/pt/packettracer %f!Exec=PacketTracerWrapper %f!' PacketTracer.desktop
+  - echo 'Categories=Education;ComputerScience;' >> PacketTracer.desktop
