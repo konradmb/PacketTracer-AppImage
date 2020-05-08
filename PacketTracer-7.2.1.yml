@@ -46,7 +46,7 @@ script:
   - #!/bin/sh
   # Fool PacketTracer into thinking that it's been already running from this directory
   # Should think of a nicer solution
-  - bin/python3 bin/PacketTracerSettingsFix.py
+  - bin/python3 bin/PacketTracerSettingsFix.py 7.2
   - cd share/PacketTracer/bin
   - ./PacketTracer7
   - EOF
