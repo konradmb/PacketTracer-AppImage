@@ -5,37 +5,40 @@
 
 ## How to use it?
 
-1. Clone this repository and go to its directory.
+1. Clone this repository and `cd` into it.
     ```shell
     git clone https://github.com/konradmb/PacketTracer-AppImage.git
     cd PacketTracer-AppImage/
     ```
-2. Download Packet Tracer 7.3.0 archive from official site: [PacketTracer_730_amd64.deb](https://www.netacad.com/portal/resources/file/aa38a51f-45bb-4eb1-89a0-01d961ae1432) (requires login).
-3. And put it into `PacketTracer-AppImage` directory.
-4. Download pkg2appimage tool and make it executable.
+2. Download pkg2appimage tool and make it executable.
    ```shell
    wget https://github.com/AppImage/pkg2appimage/raw/master/pkg2appimage
    chmod +x pkg2appimage
    ```
-5. Build it:
+3. Build it:
 
    ```shell
    ./pkg2appimage PacketTracer.yml
    ```
 
-7. After a short break you should get an executable inside `out/` directory.
+4. After a short break you should get an executable inside `out/` directory.
+
+## It doesn't work!
+
+If you encounter an error, download Packet Tracer archive from official site: [PacketTracer_730_amd64.deb](https://www.netacad.com/portal/resources/file/aa38a51f-45bb-4eb1-89a0-01d961ae1432) (requires login).
+Put it into the directory with .yml file, it will be detected automatically.
 
 ### Older versions
 
 #### Packet Tracer 7.2.1
 
-Follow the guide, but download [Packet Tracer 7.2.1 for Linux 64 bit.tar.gz](https://www.netacad.com/portal/resources/file/88097a5b-6dbd-43b5-9589-72797dca143c).
-
-And build using:
+Follow the guide, but use `PacketTracer-7.2.1.yml`.
 
 ```shell
    ./pkg2appimage PacketTracer-7.2.1.yml
 ```
+
+In case of error, download [Packet Tracer 7.2.1 for Linux 64 bit.tar.gz](https://www.netacad.com/portal/resources/file/88097a5b-6dbd-43b5-9589-72797dca143c) and put it into the directory with .yml file.
 
 #### Packet Tracer 7.1
 
