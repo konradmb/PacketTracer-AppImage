@@ -1,4 +1,4 @@
-app: PacketTracer
+app: PacketTracer-7.2.1
 
 ingredients:
   dist: jessie
@@ -11,14 +11,21 @@ ingredients:
   exclude:
     - PacketTracer
   script:
+    - FILENAME="Packet Tracer 7.2.1 for Linux 64 bit.tar.gz"
+    - [ -f ../"$FILENAME" ] && ln -sf ../"$FILENAME" .
+    - [ -f ../"$FILENAME" ] || wget -c https://archive.org/download/pt722/Packet%20Tracer%207.2.1%20for%20Linux%2064%20bit.tar.gz
+    - echo "b95e0a58e9a65c623b6534bd42855117e25c50d3 $FILENAME" > checksum
+    - sha1sum -c checksum
     # Remove directory if already extracted
     - rm -rf extracted
     - mkdir -p extracted
-    - tar zxvf ../Packet\ Tracer\ 7.2*tar.gz --directory extracted/
+    - tar zxvf "$FILENAME" --directory extracted/
     # Fix overly restrictive permissions - we should be able do delete directory
     - find extracted/saves -type d -exec chmod +w {} +
     # Copy helper script
-    - cp ../etc/PacketTracerSettingsFix.py .
+    - wget -c https://raw.githubusercontent.com/konradmb/PacketTracer-AppImage/master/etc/PacketTracerSettingsFix.py
+    - chmod +x PacketTracerSettingsFix.py
+    - echo "7.2.1" > VERSION
     
 script:
   # Copy helper script to bin
