@@ -28,9 +28,9 @@
 If you encounter an error, download Packet Tracer archive from official site: [PacketTracer_730_amd64.deb](https://www.netacad.com/portal/resources/file/aa38a51f-45bb-4eb1-89a0-01d961ae1432) (requires login).
 Put it into the directory with .yml file, it will be detected automatically.
 
-### Older versions
+## Older versions
 
-#### Packet Tracer 7.2.1
+### Packet Tracer 7.2.1
 
 Follow the guide, but use `PacketTracer-7.2.1.yml`.
 
@@ -40,7 +40,7 @@ Follow the guide, but use `PacketTracer-7.2.1.yml`.
 
 In case of error, download [Packet Tracer 7.2.1 for Linux 64 bit.tar.gz](https://www.netacad.com/portal/resources/file/88097a5b-6dbd-43b5-9589-72797dca143c) and put it into the directory with .yml file.
 
-#### Packet Tracer 7.1
+### Packet Tracer 7.1
 
 Cisco deleted previous download link. If you find one, please open an issue.
 
