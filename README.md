@@ -3,6 +3,8 @@
 
 ### A configuration for [pkg2appimage](https://github.com/AppImage/pkg2appimage) to build Packet Tracer in AppImage form.
 
+## Version: 8.1.0
+
 ## How to use it?
 
 1. Clone this repository and `cd` into it.
