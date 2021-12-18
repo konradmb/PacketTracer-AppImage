@@ -25,9 +25,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Install dependencies
         run: |
+          apt-get install desktop-file-utils
           wget https://github.com/AppImage/pkg2appimage/raw/master/pkg2appimage
           chmod +x pkg2appimage
+
+
+      # Runs a set of commands using the runners shell
+      - name: Run pkg2appimage
+        run: |
           ./pkg2appimage PacketTracer.yml
