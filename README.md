@@ -1,7 +1,12 @@
 # AppImage for Cisco Packet Tracer
+
 *🎶I'm already Tracer🎶*
 
 ### A configuration for [pkg2appimage](https://github.com/AppImage/pkg2appimage) to build Packet Tracer in AppImage form.
+
+## Version: 8.1.0
+
+If you find out that there's a new version available, please let me know by [opening an issue](https://github.com/konradmb/PacketTracer-AppImage/issues/new/?title=Update%20PacketTracer%20to%20x.x&body=Dear%20konradmb,%0APlease%20update%20this%20AppImage%20to%20a%20new%20version%20x.x!%20I%20hate%20you%20because%20I%20have%20a%20**very**%20important%20assignment%20to%20do%20and%20I%20will%20fail%20it%20because%20you%27re%20so%20lazy!%20%F0%9F%98%A1%F0%9F%98%A1%F0%9F%98%A1%0ASincerely,%20xoxo)!
 
 ## How to use it?
 
@@ -25,12 +30,22 @@
 
 ## It doesn't work!
 
-If you encounter an error, download Packet Tracer archive from official site: [PacketTracer_730_amd64.deb](https://www.netacad.com/portal/resources/file/aa38a51f-45bb-4eb1-89a0-01d961ae1432) (requires login).
+If you encounter an error, download Packet Tracer archive from official site: [CiscoPacketTracer_810_Ubuntu_64bit.deb](https://www.netacad.com/portal/resources/file/71b29477-0abb-4a52-97eb-cc23d5771574)  (requires login).
 Put it into the directory with .yml file, it will be detected automatically.
 
 ## Older versions
 
-### Packet Tracer 7.2.1
+#### Packet Tracer 7.3.0
+
+Follow the guide, but use `PacketTracer-7.3.0.yml`.
+
+```shell
+   ./pkg2appimage PacketTracer-7.2.1.yml
+```
+
+In case of error, download [PacketTracer_730_amd64.deb](https://www.netacad.com/portal/resources/file/aa38a51f-45bb-4eb1-89a0-01d961ae1432) and put it into the directory with .yml file.
+
+#### Packet Tracer 7.2.1
 
 Follow the guide, but use `PacketTracer-7.2.1.yml`.
 
@@ -46,4 +61,4 @@ Cisco deleted previous download link. If you find one, please open an issue.
 
 ## Differences from official version 
 
-* PacketTracer7 binary is patched to change `~/.packettracer` file name to `~/.ptappimage00` as to prevent conflicts with Packet Tracer executed from normal folder.
+* PacketTracer binary is patched to change `~/.packettracer` file name to `~/.ptappimage00` as to prevent conflicts with Packet Tracer executed from normal folder.
