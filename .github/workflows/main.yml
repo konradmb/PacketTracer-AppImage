@@ -35,4 +35,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run pkg2appimage
         run: |
-          ./pkg2appimage PacketTracer.yml
+          for yaml in *.yml
+          do
+            echo "Running $yaml" 
+            ./pkg2appimage $yaml
+          done
