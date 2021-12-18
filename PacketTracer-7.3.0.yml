@@ -1,4 +1,3 @@
-# Version: 8.1.0
 app: PacketTracer
 
 ingredients:
@@ -12,24 +11,21 @@ ingredients:
     - libdouble-conversion1
     - qt-at-spi
   script:
-    - FILENAME='CiscoPacketTracer_810_Ubuntu_64bit.deb'
-    - URL='http://cs3.calstatela.edu/~egean/cs4471/software/Cisco%20Packet%20Tracer%208.1/CiscoPacketTracer_810_Ubuntu_64bit.deb'
-    - CHECKSUM='09359b9597e420b2537a77f503d2d409e66b9669'
+    - FILENAME=PacketTracer_730_amd64.deb
     - [ -f ../"$FILENAME" ] && ln -sf ../"$FILENAME" .
-    - [ -f ../"$FILENAME" ] || wget -c "$URL"
-    - echo "$CHECKSUM $FILENAME" > checksum
+    - [ -f ../"$FILENAME" ] || wget -c https://archive.org/download/packettracer730mac_202002/PacketTracer_730_amd64.deb
+    - echo "c96ed6356cabeca198f8fbe237197dc7c234cd37 $FILENAME" > checksum
     - sha1sum -c checksum
-    - [ -f ../etc/PacketTracerSettingsFix.py ] && cp ../etc/PacketTracerSettingsFix.py .
-    - [ -f ../etc/PacketTracerSettingsFix.py ] || wget -c https://raw.githubusercontent.com/konradmb/PacketTracer-AppImage/master/etc/PacketTracerSettingsFix.py
+    - wget -c https://raw.githubusercontent.com/konradmb/PacketTracer-AppImage/master/etc/PacketTracerSettingsFix.py
     - chmod +x PacketTracerSettingsFix.py
     
 script:
   # Fix overly restrictive permissions - we should be able do delete directory
-  - find opt/pt/saves opt/pt/templates -type d -exec chmod +w {} +
+  - find opt/pt/saves -type d -exec chmod +w {} +
   # Copy helper script to bin
   - cp ../PacketTracerSettingsFix.py usr/bin/
   # Copy .desktop file, icon and libs from extracted archive
-  - cp usr/share/applications/cisco-pt.desktop ./PacketTracer.desktop
+  - cp usr/share/applications/cisco-pt7.desktop ./PacketTracer.desktop
   - cp opt/pt/art/app.png ./PacketTracer.png
   - mkdir -p usr/lib/x86_64-linux-gnu/
   - mv opt/pt/bin/*.so.* usr/lib/x86_64-linux-gnu/
@@ -44,16 +40,15 @@ script:
   - #!/bin/sh
   # Fool PacketTracer into thinking that it's been already running from this directory
   - cd ..
-  - usr/bin/python3 usr/bin/PacketTracerSettingsFix.py 8.1
+  - usr/bin/python3 usr/bin/PacketTracerSettingsFix.py 7.3
   - cd opt/pt/bin
-  - export PT8HOME="$(readlink -f ..)"
-  - QT_AUTO_SCREEN_SCALE_FACTOR=1 ./PacketTracer "$@"
+  - QT_AUTO_SCREEN_SCALE_FACTOR=1 ./PacketTracer7 "$@"
   - EOF
   # Make it executable
   - chmod +x usr/bin/PacketTracerWrapper
   # Patch PT bin - change $HOME/.packettracer string to something else
   # New file name must have the same length
-  - sed -i 's!/.packettracer!/.ptappimage00!g' opt/pt/bin/PacketTracer
+  - sed -i 's!/.packettracer!/.ptappimage00!g' opt/pt/bin/PacketTracer7
   # Change icon and executable path
   - sed -i 's!Icon=/opt/pt/art/app.png!Icon=PacketTracer.png!' PacketTracer.desktop
   - sed -i 's!Exec=/opt/pt/packettracer %f!Exec=PacketTracerWrapper %f!' PacketTracer.desktop
