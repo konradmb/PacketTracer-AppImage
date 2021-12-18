@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          apt-get install desktop-file-utils
+          sudo apt-get install desktop-file-utils
           wget https://github.com/AppImage/pkg2appimage/raw/master/pkg2appimage
           chmod +x pkg2appimage
 
