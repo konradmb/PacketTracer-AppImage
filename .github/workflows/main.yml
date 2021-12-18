@@ -37,6 +37,10 @@ jobs:
         run: |
           for yaml in *.yml
           do
+            if [ "$yaml" == "PacketTracer-7.1.yml" ] ; then
+              continue;
+            fi
+
             echo "Running $yaml" 
             ./pkg2appimage $yaml
           done
