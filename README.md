@@ -28,6 +28,12 @@ If you find out that there's a new version available, please let me know by [ope
 
 4. After a short break you should get an executable inside `out/` directory.
 
+### Can't you just put AppImage in releases, so I can simply download one file?
+
+I can't put the resulting AppImage here, because the Packet Tracer license forbids redistribution (at least it said so when I checked the old license, I can't find it in new EULAs, but there is a reason that NetAcad account is required to download PT).
+
+I don't know if Cisco enforces it, but they could send a DMCA takedown request (and GitHub would have to delete whole repo).
+
 ## It doesn't work!
 
 If you encounter an error, download Packet Tracer archive from official site: [CiscoPacketTracer_810_Ubuntu_64bit.deb](https://www.netacad.com/portal/resources/file/71b29477-0abb-4a52-97eb-cc23d5771574)  (requires login).
