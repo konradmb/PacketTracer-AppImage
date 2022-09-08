@@ -13,7 +13,7 @@ ingredients:
     - qt-at-spi
   script:
     - FILENAME='CiscoPacketTracer_810_Ubuntu_64bit.deb'
-    - URL='http://cs3.calstatela.edu/~egean/cs4471/software/Cisco%20Packet%20Tracer%208.1/CiscoPacketTracer_810_Ubuntu_64bit.deb'
+    - URL='https://archive.org/download/cisco-packet-tracer-810-ubuntu-64bit/CiscoPacketTracer_810_Ubuntu_64bit.deb'
     - CHECKSUM='09359b9597e420b2537a77f503d2d409e66b9669'
     - [ -f ../"$FILENAME" ] && ln -sf ../"$FILENAME" .
     - [ -f ../"$FILENAME" ] || wget -c "$URL"
