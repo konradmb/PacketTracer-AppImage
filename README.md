@@ -4,7 +4,7 @@
 
 ### A configuration for [pkg2appimage](https://github.com/AppImage/pkg2appimage) to build Packet Tracer in AppImage form.
 
-## Version: 8.1.0
+## Version: 8.2.0
 
 If you find out that there's a new version available, please let me know by [opening an issue](https://github.com/konradmb/PacketTracer-AppImage/issues/new/?title=Update%20PacketTracer%20to%20x.x&body=Dear%20konradmb,%0APlease%20update%20this%20AppImage%20to%20a%20new%20version%20x.x!%20I%20hate%20you%20because%20I%20have%20a%20**very**%20important%20assignment%20to%20do%20and%20I%20will%20fail%20it%20because%20you%27re%20so%20lazy!%20%F0%9F%98%A1%F0%9F%98%A1%F0%9F%98%A1%0ASincerely,%20xoxo)!
 
@@ -36,7 +36,7 @@ I don't know if Cisco enforces it, but they could send a DMCA takedown request (
 
 ## It doesn't work!
 
-If you encounter an error, download Packet Tracer archive from official site: [CiscoPacketTracer_810_Ubuntu_64bit.deb](https://www.netacad.com/portal/resources/file/71b29477-0abb-4a52-97eb-cc23d5771574)  (requires login).
+If you encounter an error, download Packet Tracer archive from official site: [Cisco_Packet_Tracer_820_Ubuntu_64bit_696ae64b25.deb](https://skillsforall.com/resources/lab-downloads)  (requires login).
 Put it into the directory with .yml file, it will be detected automatically.
 
 ## Older versions
