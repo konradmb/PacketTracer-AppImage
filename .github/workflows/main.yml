@@ -27,7 +27,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt-get install desktop-file-utils
+          sudo add-apt-repository universe
+          sudo apt-get install desktop-file-utils libfuse2
           wget https://github.com/AppImage/pkg2appimage/raw/master/pkg2appimage
           chmod +x pkg2appimage
 
