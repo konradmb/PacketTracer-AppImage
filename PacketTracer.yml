@@ -4,13 +4,14 @@ app: PacketTracer
 ingredients:
   dist: jessie
   sources:
-    - deb http://deb.debian.org/debian jessie main
+    - deb http://archive.debian.org/debian jessie main
   packages:
     - libpng12-0
     - libssl1.0.0
     - python3
     - libdouble-conversion1
     - qt-at-spi
+    - libxcb-xinerama0
   script:
     - FILENAME='Cisco_Packet_Tracer_820_Ubuntu_64bit_696ae64b25.deb'
     - URL='https://archive.org/download/cisco-packet-tracer-820-ubuntu-64bit-696ae-64b-25/Cisco_Packet_Tracer_820_Ubuntu_64bit_696ae64b25.deb'
