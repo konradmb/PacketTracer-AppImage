@@ -44,4 +44,6 @@ jobs:
 
             echo "Running $yaml" 
             ./pkg2appimage $yaml
+            echo "Removing PacketTracer directory"
+            rm -f PacketTracer
           done
