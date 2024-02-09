@@ -23,18 +23,18 @@ ingredients:
     - [ -f ../etc/PacketTracerSettingsFix.py ] && cp ../etc/PacketTracerSettingsFix.py .
     - [ -f ../etc/PacketTracerSettingsFix.py ] || wget -c https://raw.githubusercontent.com/konradmb/PacketTracer-AppImage/master/etc/PacketTracerSettingsFix.py
     - chmod +x PacketTracerSettingsFix.py
+    - cp -r ../etc/ .
     
 script:
   # Fix overly restrictive permissions - we should be able do delete directory
   - find opt/pt/saves opt/pt/templates -type d -exec chmod +w {} +
   # Copy helper script to bin
   - cp ../PacketTracerSettingsFix.py usr/bin/
-  # Copy .desktop file, icon and libs from extracted archive
-  - cp usr/share/applications/cisco-pt.desktop ./PacketTracer.desktop
+  # Copy icon and libs from extracted archive
   - cp opt/pt/art/app.png ./PacketTracer.png
   - mkdir -p usr/lib/x86_64-linux-gnu/
   - mv opt/pt/bin/*.so.* usr/lib/x86_64-linux-gnu/
-  # # Remove unused binaries
+  # Remove unused binaries
   - rm opt/pt/bin/linguist opt/pt/bin/meta
   # Fix wrong permissions - images shouldn't be executable. Cisco still cannot into permissions, even with deb. ;)
   - find opt/pt/help/default/images/ -type f -exec chmod -x {} +
@@ -55,7 +55,9 @@ script:
   # Patch PT bin - change $HOME/.packettracer string to something else
   # New file name must have the same length
   - sed -i 's!/.packettracer!/.ptappimage00!g' opt/pt/bin/PacketTracer
-  # Change icon and executable path
+  # Create .desktop file
+  - cp ../etc/PacketTracer.desktop .
+  # - cp ../etc/PacketTracer-url.desktop .
   - sed -i 's!Icon=/opt/pt/art/app.png!Icon=PacketTracer.png!' PacketTracer.desktop
   - sed -i 's!Exec=/opt/pt/packettracer %f!Exec=PacketTracerWrapper %f!' PacketTracer.desktop
   - echo 'Categories=Education;ComputerScience;' >> PacketTracer.desktop
