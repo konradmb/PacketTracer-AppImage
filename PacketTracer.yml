@@ -1,4 +1,4 @@
-# Version: 8.2.1
+# Version: 8.2.2
 app: PacketTracer
 
 ingredients:
@@ -13,9 +13,9 @@ ingredients:
     - qt-at-spi
     - libxcb-xinerama0
   script:
-    - FILENAME='CiscoPacketTracer_821_Ubuntu_64bit.deb'
-    - URL='https://www.dca.ufrn.br/~viegas/disciplinas/DCA0113/files/Simuladores/821/CiscoPacketTracer_821_Ubuntu_64bit.deb'
-    - CHECKSUM='d3b506411c204bac556d323d929797f33ddc1e6b'
+    - FILENAME='CiscoPacketTracer822_amd64_signed.deb'
+    - URL='https://archive.org/download/cisco-packet-tracer-822-amd-64-signed_202405/CiscoPacketTracer822_amd64_signed.deb'
+    - CHECKSUM='35bd819fcb0e2ed1df3582387d599e4a9c6bf2c9'
     - [ -f ../"$FILENAME" ] && ln -sf ../"$FILENAME" .
     - [ -f ../"$FILENAME" ] || wget -c "$URL"
     - echo "$CHECKSUM $FILENAME" > checksum
